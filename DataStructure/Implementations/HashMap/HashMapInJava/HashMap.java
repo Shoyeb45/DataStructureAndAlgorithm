@@ -1,4 +1,4 @@
-package HashMap;
+package HashMapInJava;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;

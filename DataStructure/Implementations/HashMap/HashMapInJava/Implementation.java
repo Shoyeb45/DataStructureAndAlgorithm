@@ -1,4 +1,4 @@
-package HashMap;
+import HashMapInJava.HashMap;
 import java.util.Scanner;
 
 public class Implementation {
