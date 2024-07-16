@@ -1,4 +1,5 @@
-import HashMapInJava.HashMap;
+package HashMapInJava;
+
 import java.util.Scanner;
 
 public class Implementation {
