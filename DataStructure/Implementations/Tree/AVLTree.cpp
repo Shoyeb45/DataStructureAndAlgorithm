@@ -256,25 +256,25 @@ private:
         int balancingFactor = balanceFactor(curr);
 
         // Left Left Case
-        if (bf > 1 && data < curr.left.data) {
-            return rightRotation(curr);
+        if (balancingFactor > 1 && data < curr -> left -> data) {
+            return rightRotate(curr);
         }
 
         // Left Right Case
-        if (bf > 1 && data > curr.left.data) {
-            curr.left = leftRotation(curr.left);
-            return rightRotation(curr);
+        if (balancingFactor > 1 && data > curr -> left -> data) {
+            curr -> left = leftRotate(curr -> left);
+            return rightRotate(curr);
         }
 
         // Right Right Case
-        if (bf < -1 && data > curr.right.data) {
-            return leftRotation(curr);
+        if (balancingFactor < -1 && data > curr -> right -> data) {
+            return leftRotate(curr);
         }
 
         // Right Left Case
-        if (bf < -1 && data < curr.right.data) {
-            curr.right = rightRotation(curr.right);
-            return leftRotation(curr);
+        if (balancingFactor < -1 && data < curr -> right -> data) {
+            curr -> right = rightRotate(curr -> right);
+            return leftRotate(curr);
         }
         return curr;
     }
