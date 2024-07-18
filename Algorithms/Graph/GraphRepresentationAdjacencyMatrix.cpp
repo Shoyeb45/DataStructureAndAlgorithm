@@ -7,7 +7,7 @@ typedef long long ll;
 const ll mod = 1000000007;
 
 // Adjacency Matrix representation of undirected Graph 
-// If we want to store the directed graphm, then just mark adjacencyMat[x][y] = true;
+// If we want to store the directed graph, then just mark adjacencyMat[x][y] = true;
 
 int main() {
     int nodes, edges;
