@@ -20,4 +20,6 @@
 
 1. [Number of Provinces](https://www.geeksforgeeks.org/problems/number-of-provinces/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number_of_provinces) - GFG
 
-    solution : ![Number of Provinces](./Images/image.png)
+    solution : 
+    
+    ![Number of Provinces](./Images/image.png)
