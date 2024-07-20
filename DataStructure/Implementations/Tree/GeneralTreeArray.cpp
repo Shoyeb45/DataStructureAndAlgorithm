@@ -13,7 +13,7 @@ class Tree {
     }
 
     public:
-        GeneralTree() {}
+        Tree() {}
     
     int insertNode(int value) {
         Node newNode;
