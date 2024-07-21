@@ -43,7 +43,7 @@
 2. [Flood Fill Alogrithm](https://www.geeksforgeeks.org/problems/flood-fill-algorithm1856/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=flood-fill-algorithm)
 
    Solution(BFS):
-   ![BFS](./Images/ffDFS.png)
+   ![BFS](./Images/ffBFS.png)
 
    Solution(DFS):
    ![DFS](./Images/ffDFS.png)
