@@ -17,6 +17,16 @@
    b. [DFS Traversal](./DFSTraversal.cpp)
 
 
+3. Detecting Cycle In Graph
+
+    1. Undirected Graph
+
+        a. [Problem Link](https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=detect-cycle-in-an-undirected-graph)
+
+        b. [Solution using BFS and DFS](./DetectCycleInGraph.cpp)
+        
+    2. Directed Graph
+
 3. Strongly Connected Components
 
     a. [Kosraju's Algorithm - Link](https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo)
