@@ -55,7 +55,7 @@
    Solution:
 
 ```
-    #define loop(i, n) for(int i = 0; i < n; i++)
+#define loop(i, n) for(int i = 0; i < n; i++)
 
 class Solution  {
     public:
@@ -117,3 +117,111 @@ class Solution  {
     }
 };
 ```
+
+4. Distance of nearest cell having 1/0
+
+    - [Leetcode - 01 Matrix](https://leetcode.com/problems/01-matrix/description/)
+    - [GFG - Distance of nearest cell having 1](https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=distance-of-nearest-cell-having-1)
+
+Solutions:
+<details>
+        <summary>Leetcode</summary>
+
+```
+#define loop(i, n) for(int i = 0; i < n; i++)
+
+class Solution {
+public:
+    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+        int n = mat.size(), m = mat[0].size();
+        int dx[] = {-1, +1, 0, 0};
+        int dy[] = {0, 0, -1, +1};
+
+        vector<vector<int>> ans(n, vector<int>(m));
+        vector<vector<bool>> visited(n, vector<bool>(m));
+
+        queue<pair<pair<int, int>, int>> q;
+
+        loop(i, n) {
+            loop(j, m) {
+                if(mat[i][j] == 0) {
+                    visited[i][j] = 1;
+                    q.push(make_pair(make_pair(i, j), 0));
+                }
+            }
+        }
+
+        while(!q.empty()) {
+            int x = q.front().first.first, y = q.front().first.second;
+            int minDistance = q.front().second;
+            q.pop();
+            ans[x][y] = minDistance;
+
+            loop(k, 4) {
+                int nx = x + dx[k], ny = y + dy[k];
+                if(nx >= 0 && nx < n && ny >= 0 && ny < m && visited[nx][ny] == 0) {
+                    visited[nx][ny] = 1;
+                    q.push(make_pair(make_pair(nx, ny), minDistance + 1));
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+</details>
+
+<details>
+<summary>GFG</summary>
+
+```
+#define loop(i, n) for(int i = 0; i < n; i++)
+
+class Solution {
+  public:
+    // Function to find distance of nearest 1 in the grid for each cell.
+    vector<vector<int>> nearest(vector<vector<int>>& grid) {
+        // Code here
+        int dx[] = {-1, 1, 0, 0};
+        int dy[] = {0, 0, -1, 1};
+        
+        int n = grid.size(), m = grid[0].size();
+        vector<vector<int>> ans(n, vector<int> (m));
+        
+        loop(i, n) {
+            loop(j, m) {
+                if(grid[i][j] == 1) {
+                    ans[i][j] = 0;
+                } else {
+                    queue<pair<int, int>> q;
+                    q.push({i, j});
+                    
+                    while(!q.empty()) {
+                        int x = q.front().first, y = q.front().second;
+                        q.pop();
+                        bool chk = 0;
+                        loop(k, 4) {
+                            int nx = x + dx[k], ny = y + dy[k];
+                            
+                            if(nx >= 0 && nx < n && ny >= 0 && ny < m) {
+                                if(grid[nx][ny] == 1) {
+                                    ans[i][j] = abs(i - nx) + abs(j - ny);
+                                    chk = 1;
+                                    break;
+                                } else {
+                                    q.push({nx, ny});
+                                }
+                            }
+                        }
+                        if(chk)
+                            break;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+</details>
