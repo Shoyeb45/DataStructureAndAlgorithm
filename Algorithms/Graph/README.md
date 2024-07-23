@@ -27,6 +27,12 @@
         
     2. Directed Graph
 
+4. Topological Sort
+
+    - [GFG - Link](https://www.geeksforgeeks.org/problems/topological-sort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=topological-sort)
+    
+    - [Solution](./TopologicalSort.cpp)
+
 3. Strongly Connected Components
 
     a. [Kosraju's Algorithm - Link](https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo)
