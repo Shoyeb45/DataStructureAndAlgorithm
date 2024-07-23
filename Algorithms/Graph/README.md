@@ -31,7 +31,8 @@
 
     - [GFG - Link](https://www.geeksforgeeks.org/problems/topological-sort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=topological-sort)
     
-    - [Solution](./TopologicalSort.cpp)
+    - [Solution - BFS](./TopologicalSortBFS.cpp)
+    - [Solution - DFS](./TopologicalSortDFS.cpp)
 
 3. Strongly Connected Components
 
