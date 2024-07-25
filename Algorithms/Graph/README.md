@@ -38,18 +38,24 @@
 
     a. Shortest Path in Directed Acyclic Graph
     
-    - [gfg link for practice](https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/0)
+    - [GFG link for practice](https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/0)
     - [Solution - DFS](./ShortestPath/DFSOnDAG.cpp)
 
     b. Shortest Path in Undirected Graph
 
-    - [gfg link for practice](https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/0)
+    - [GFG link for practice](https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/0)
     - [Solution - BFS](./ShortestPath/BFSOnUndirectedGraph.cpp)
+
+    c. Djikstra's Algorithm
+
+    - [GFG link for practice](https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implementing-dijkstra-set-1-adjacency-matrix)
+    - [Solution - Using Min-Heap](./ShortestPath/DjikstraAlgoPQ.cpp)
 3. Strongly Connected Components
 
     a. [Kosaraju's Algorithm - Link](https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo)
 
     b. [Kosaraju's Algorithm - Solution](./Kosaraju'sAlgo.cpp)
+
 ## Practice Question
 
 1. [Number of Provinces](https://www.geeksforgeeks.org/problems/number-of-provinces/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number_of_provinces) - GFG
