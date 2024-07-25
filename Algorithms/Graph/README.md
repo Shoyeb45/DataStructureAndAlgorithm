@@ -50,6 +50,8 @@
 
     - [GFG link for practice](https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implementing-dijkstra-set-1-adjacency-matrix)
     - [Solution - Using Min-Heap](./ShortestPath/DjikstraAlgoPQ.cpp)
+    - [Solution - Using Set](./ShortestPath/DjikstraAlgoSet.cpp)
+    
 3. Strongly Connected Components
 
     a. [Kosaraju's Algorithm - Link](https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo)
