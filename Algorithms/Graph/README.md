@@ -2,7 +2,7 @@
 
 ## Theory part
 
-1. Graph Representation
+1. <b>Graph Representation</b>
 
    a. [Adjancency Matrix](./GraphRepresentationAdjacencyMatrix.cpp)
 
@@ -10,14 +10,14 @@
 
    c. [Weighted Graph Representation](./WeightedGraphRepresentation.cpp)
 
-2. Traversal
+2. <b>Traversal</b>
 
    a. [BFS Traversal](./BFSTraversal.cpp)
 
    b. [DFS Traversal](./DFSTraversal.cpp)
 
 
-3. Detecting Cycle In Graph
+3. <b>Detecting Cycle In Graph</b>
 
     1. Undirected Graph
 
@@ -27,14 +27,14 @@
         
     2. Directed Graph
 
-4. Topological Sort
+4. <b>Topological Sort</b>
 
     - [GFG - Link](https://www.geeksforgeeks.org/problems/topological-sort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=topological-sort)
     
     - [Solution - BFS](./TopologicalSortBFS.cpp)
     - [Solution - DFS](./TopologicalSortDFS.cpp)
 
-4. Shortest Path
+4. <b>Shortest Path</b>
 
     a. Shortest Path in Directed Acyclic Graph
     
@@ -51,8 +51,13 @@
     - [GFG link for practice](https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implementing-dijkstra-set-1-adjacency-matrix)
     - [Solution - Using Min-Heap](./ShortestPath/DjikstraAlgoPQ.cpp)
     - [Solution - Using Set](./ShortestPath/DjikstraAlgoSet.cpp)
+
+    d. Bellman-Ford Algorith
+
+    - [GFG link for practice](https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=distance-from-the-source-bellman-ford-algorithm)
+    - [Solutioin](./ShortestPath/BellmanFord.cpp)
     
-3. Strongly Connected Components
+3. <b>Strongly Connected Components</b>
 
     a. [Kosaraju's Algorithm - Link](https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo)
 
@@ -143,7 +148,6 @@ class Solution  {
     }
 };
 ```
-
 4. Distance of nearest cell having 1/0
 
     - [Leetcode - 01 Matrix](https://leetcode.com/problems/01-matrix/description/)

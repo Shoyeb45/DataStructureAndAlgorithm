@@ -18,7 +18,7 @@ vector <int> dijkstra(int V, vector<vector<int>> adj[], int S) {
     // Initializing min heap
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
-    pq.push({0, S}); // Inserting source node into min-heap
+    pq.push({0, S}); // Inserting source node into max-heap
     distance[S] = 0;
 
     while(!pq.empty()) {
@@ -49,7 +49,6 @@ int main() {
         int start, end, weight;
         cin >> start >> end >> weight;
         adj[start].push_back({end, weight});
-        adj[end].push_back({start, weight});
     }
 
     vector<int> distance = dijkstra(n, adj, src);
