@@ -34,9 +34,20 @@
     - [Solution - BFS](./TopologicalSortBFS.cpp)
     - [Solution - DFS](./TopologicalSortDFS.cpp)
 
+4. Shortest Path
+
+    a. Shortest Path in Directed Acyclic Graph
+    
+    - [gfg link for practice](https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/0)
+    - [Solution - DFS](./ShortestPath/DFSOnDAG.cpp)
+
+    b. Shortest Path in Undirected Graph
+
+    - [gfg link for practice](https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/0)
+    - [Solution - BFS](./ShortestPath/BFSOnUndirectedGraph.cpp)
 3. Strongly Connected Components
 
-    a. [Kosraju's Algorithm - Link](https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo)
+    a. [Kosaraju's Algorithm - Link](https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo)
 
     b. [Kosaraju's Algorithm - Solution](./Kosaraju'sAlgo.cpp)
 ## Practice Question
