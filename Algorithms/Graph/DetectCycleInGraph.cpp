@@ -23,7 +23,7 @@ bool bfs(int curr, vector<int> adj[], vector<bool> &visited) {
     q.push({curr, -1});
     while(!q.empty()) {
         int node = q.front().first;
-        int parent = q.front().first;
+        int parent = q.front().second;
         q.pop();
 
         for(auto adjNode: adj[curr]) {
