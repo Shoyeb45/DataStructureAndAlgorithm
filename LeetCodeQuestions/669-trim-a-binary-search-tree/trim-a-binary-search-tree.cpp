@@ -16,10 +16,10 @@ public:
             return nullptr;
         }
         if (root -> val < low) {
-            return f(root -> right, low, high);
+            root = f(root -> right, low, high);
         }
         else if (root -> val > high) {
-            return f(root -> left, low, high);
+            root = f(root -> left, low, high);
         }
         else {
             root -> left = f(root -> left, low, high);
@@ -27,6 +27,7 @@ public:
         }
         return root;
     }
+    
     TreeNode* trimBST(TreeNode* root, int low, int high) {
         if (!root) {
             return root;
