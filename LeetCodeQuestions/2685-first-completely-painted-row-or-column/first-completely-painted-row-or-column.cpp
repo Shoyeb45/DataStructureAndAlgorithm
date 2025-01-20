@@ -1,6 +1,9 @@
+#define NFS ios_base::sync_with_stdio(false); cin.tie(NULL);
+
 class Solution {
 public:
     int firstCompleteIndex(vector<int>& arr, vector<vector<int>>& mat) {
+        NFS
         int n = mat.size(), m = mat[0].size();
 
         unordered_map<int, pair<int, int>> mp;
@@ -19,7 +22,7 @@ public:
                 return x;
             }  
         }
-        
+
         return -1;
     }
 };
