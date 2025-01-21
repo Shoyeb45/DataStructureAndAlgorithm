@@ -16,6 +16,10 @@ void dfs(int currVertex, vector<pair<int, int>> adj[], stack<int> &topo, vector<
 
 vector<int> shortestPath(vector<pair<int, int>> adj[], int N) {
     // 1. Perform topo sort
+    // Why to topologically sort??
+    // It ensures that the before the current node all the previous nodes have already been relaxed or we have the distance of previous nodes. 
+    // So we know for sure that the best distance of previous nodes have been calculated. 
+    // So we need to do toposort
     stack<int> topo;
     vector<bool> vis(N, 0);
     for (int i = 0; i < N; i++) {
