@@ -7,7 +7,6 @@ typedef long long ll;
 const ll mod = 1000000007;
 
 vector<int> topoSort(int V, vector<int> adj[]) {
-	// code here
 	vector<int> indegree(V), ans;
     for(int i = 0; i < V; i++) {
         for(auto x: adj[i]) {
@@ -29,6 +28,7 @@ vector<int> topoSort(int V, vector<int> adj[]) {
 
         for(auto x: adj[node]) {
             indegree[x]--;
+            // If indegree is 0 then only add 
             if(indegree[x] == 0) {
                 q.push(x);
             }
