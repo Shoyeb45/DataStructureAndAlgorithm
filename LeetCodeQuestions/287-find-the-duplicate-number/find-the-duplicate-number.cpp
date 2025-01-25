@@ -12,10 +12,7 @@ public:
             }
 
             // By piegon hole principle
-            if (num_smaller > mid) {
-                return true;
-            }
-            return false;
+            return num_smaller > mid;
         };
 
         while (low <= high) {
