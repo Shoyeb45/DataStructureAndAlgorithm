@@ -1,6 +1,9 @@
+#define NFS ios_base::sync_with_stdio(false); cin.tie(NULL);
+
 class Solution {
 public:
     int findMaxFish(vector<vector<int>>& grid) {
+        NFS
         vector<pair<int, int>> waterCell;
 
         for (int i = 0; i < grid.size(); i++) {
