@@ -4,41 +4,50 @@ auto init = []() { ios::sync_with_stdio(0); cin.tie(0); cout.tie(0); return 'c';
 
 class MedianFinder {
 public:
-    multiset<int> m_set;
-    multiset<int>::iterator mid;
-
+    priority_queue<int> min_heap;
+    priority_queue<int, vector<int>, greater<int>> max_heap;
     MedianFinder() {
     }
     
-    void addNum(int num) {
-        if (m_set.empty()) {
-            m_set.insert(num);
-            mid = m_set.begin();
+    void addNum(int num) {  
+        if (max_heap.empty()) {
+            max_heap.push(num);
             return;
         }
-        m_set.insert(num);
 
-        if (m_set.size() % 2 == 0) {
-            if (num < *mid) {
-                mid--;
-            }
+        int top = max_heap.top();
+        if (num < top) {
+            min_heap.push(num);
         }
-        else {  
-            if (num >= *mid) {
-                mid++;
-            }
+        else {
+            max_heap.push(num);
         }
+        balance();
     }
     
-    double findMedian() {
-        if ((m_set.size() & 1) == 1) {
-            return (double)*mid;
+    void balance() {
+        while (abs((int)(max_heap.size() - min_heap.size())) > 1) {
+            if (max_heap.size() > min_heap.size()) {
+                min_heap.push(max_heap.top());
+                max_heap.pop();
+            }
+            else {
+                max_heap.push(min_heap.top());
+                min_heap.pop();
+            }
         }
-        double a1 = *mid;
-        auto temp = mid;
-        temp++;
-        double a2 = *temp;
-        return (a1 + a2) / 2;
+    } 
+
+
+    double findMedian() {
+        if (((max_heap.size() + min_heap.size()) & 1) == 1) {
+            if (max_heap.size() > min_heap.size()) {
+                return (double)max_heap.top();
+            } 
+            return (double)min_heap.top();
+        }    
+
+        return (1.0 * max_heap.top() + 1.0 * min_heap.top()) / 2;
     }
 };
 
