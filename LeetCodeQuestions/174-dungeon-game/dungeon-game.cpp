@@ -1,26 +1,35 @@
+#define NFS ios_base::sync_with_stdio(false); cin.tie(NULL);
+
 class Solution {
 public:
-    int dp[201][201];
-    Solution() {
-        memset(dp, -1, sizeof(dp));
-    }
+    int calculateMinimumHP(vector<vector<int>>& dungeon) {
+        NFS
+        int n = dungeon.size(), m = dungeon[0].size();
 
-    int calculateMinimumHP(vector<vector<int>>& dungeon, int row = 0, int col = 0) {
-        if (row >= dungeon.size() || col >= dungeon[0].size()) {
-            return INT_MAX;
-        }
-        if (row == dungeon.size() - 1 && col == dungeon[0].size() - 1) {
-            return max(-dungeon[row][col] + 1, 1);
-        }
+        vector<vector<int>> dp(n, vector<int> (m));
 
-        if (dp[row][col] != -1) {
-            return dp[row][col];
-        }
+        dp[n - 1][m - 1] = max(-dungeon[n - 1][m - 1] + 1, 1);
 
-        int a = calculateMinimumHP(dungeon, row + 1, col);
-        int b = calculateMinimumHP(dungeon, row, col + 1);
-        cout << a << " " << b << "\n";
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+                cout << "index : " << i << " " << j << "\n";
+                if (i == n - 1 && j == m - 1) {
+                    continue;
+                }
 
-        return dp[row][col] = max(min(a, b) - dungeon[row][col], 1);
+                int a = 1e9, b = a;
+
+                if (i + 1 < n) {
+                    a = dp[i + 1][j];
+                }
+                if (j + 1 < m) {
+                    b = dp[i][j + 1];
+                }
+                cout << a << " " << b << "\n";
+                dp[i][j] = max(min(a, b) - dungeon[i][j], 1);
+            }
+        }     
+
+        return dp[0][0];
     }
 };
