@@ -1,4 +1,5 @@
-// Chat gpt
+/*                                                  ----- Deepseek -----                                                                   */
+
 class Solution {
 public:
     // A Node holds the minimum value in a segment and its index.
