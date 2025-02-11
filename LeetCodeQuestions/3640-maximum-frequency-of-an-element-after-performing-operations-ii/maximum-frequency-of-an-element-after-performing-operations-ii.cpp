@@ -1,30 +1,29 @@
+
 class Solution {
 public:
-    int maxFrequency(vector<int>& nums, int k, int ope) {
-        map<int, int> mp;   
-        unordered_map<int, int> freq; 
-        for (auto x : nums) {
-            freq[x]++;
-            mp[x - k]++;
-            mp[x] += 0;
-            mp[x + k + 1]--;
+    int maxFrequency(vector<int>& nums, int k, int numOperations) {
+        map<int, int> mp;
+        map<int, int> hmp;
+
+        for (int i = 0; i < nums.size(); i++) {
+            int start = nums[i] - k;
+            int end = nums[i] + k;
+            hmp[nums[i]]++; 
+            mp[start]++;
+            mp[end + 1]--; 
+            mp[nums[i]] += 0;
         }
 
-        int cnt = 0, ans = INT_MIN;
-        for (auto it : mp) {
-            cnt += it.second;
-            int f;
-
-            if (cnt > ope) {
-                f = min(freq[it.first] + ope, cnt);
+        int ans = 0, count = 0;
+        for (auto it = mp.begin(); it != mp.end(); it++) {
+            count += it->second;
+            if (count > numOperations) {
+                int freq = min(hmp[it->first] + numOperations, count);
+                ans = max(ans, freq);
+            } else {
+                ans = max(ans, count);
             }
-            else {
-                f = cnt;
-            }
-           
-            ans = max(ans, f);
         }
-
         return ans;
     }
 };
