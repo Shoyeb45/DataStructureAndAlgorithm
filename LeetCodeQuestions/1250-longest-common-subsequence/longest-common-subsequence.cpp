@@ -1,8 +1,11 @@
 // Iterative Dp
 
+#define NFS ios_base::sync_with_stdio(false); cin.tie(NULL);
+
 class Solution {
 public:
     int longestCommonSubsequence(string s1, string s2) {
+        NFS
         // Define dp table
         int n = s1.size(), m = s2.size();
         vector<vector<int>> dp(n, vector<int> (m, 0));
