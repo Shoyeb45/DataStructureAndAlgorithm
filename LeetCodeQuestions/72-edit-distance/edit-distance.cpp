@@ -3,16 +3,11 @@ class Solution {
 public:
     int dp[501][501];
     int f(string &s1, string &s2, int idx1, int idx2) {
-        // base case
-        if (idx1 < 0 && idx2 < 0) {
-            return 0;  // convert "" -> ""
+        // base case - we can shorten base case
+        if (idx1 < 0 || idx2 < 0) {
+            return max(idx1 + 1, idx2 + 1);  // convert "" -> ""
         }
-        else if (idx2 < 0) {
-            return idx1 + 1; // convert s1s2...s_idx1 -> ""
-        }
-        else if (idx1 < 0) {
-            return idx2 + 1; 
-        }
+        
         if (dp[idx1][idx2] != -1) {
             return dp[idx1][idx2];
         }
