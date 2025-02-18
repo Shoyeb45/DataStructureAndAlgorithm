@@ -1,29 +1,28 @@
-// recursive solution
 class Solution {
 public:
-    int dp[501][501];
-    int f(string &s1, string &s2, int idx1, int idx2) {
-        // base case - we can shorten base case
-        if (idx1 < 0 || idx2 < 0) {
-            return max(idx1 + 1, idx2 + 1);  // convert "" -> ""
-        }
-        
-        if (dp[idx1][idx2] != -1) {
-            return dp[idx1][idx2];
+    int minDistance(string s1, string s2) {
+        int n = s1.size(), m = s2.size();
+        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+
+        // Base case initialization
+        for (int i = 0; i <= n; i++) dp[i][0] = i;  // Deleting characters
+        for (int j = 0; j <= m; j++) dp[0][j] = j;  // Inserting characters
+
+        // Filling DP table
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                if (s1[i - 1] == s2[j - 1]) {  // Correct indexing
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else {
+                    dp[i][j] = 1 + min({
+                        dp[i - 1][j - 1], // Replace
+                        dp[i][j - 1],     // Insert
+                        dp[i - 1][j]      // Delete
+                    });
+                }
+            }
         }
 
-        if (s1[idx1] == s2[idx2]) {
-            return dp[idx1][idx2] = f(s1, s2, idx1 - 1, idx2 - 1);
-        }
-
-        return dp[idx1][idx2] = min({
-            f(s1, s2, idx1, idx2 - 1),     // insert
-            f(s1, s2, idx1 - 1, idx2 - 1), // replace
-            f(s1, s2, idx1 - 1, idx2)      // delete
-        }) + 1;
-    }
-    int minDistance(string word1, string word2) {
-        memset(dp, -1, sizeof(dp));
-        return f(word1, word2, word1.size() - 1, word2.size() - 1);
+        return dp[n][m];
     }
 };
