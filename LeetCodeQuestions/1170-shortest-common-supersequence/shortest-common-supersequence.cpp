@@ -1,7 +1,10 @@
+#define NFS ios_base::sync_with_stdio(false); cin.tie(NULL);
+
 class Solution {
 public:
 
     string shortestCommonSupersequence(string s1, string s2) {
+        NFS
         int n = s1.size(), m = s2.size();
 
         // Dp table
@@ -52,7 +55,7 @@ public:
         while (j > 0) {
             ans += s2[j-- - 1];
         }
-        
+
         reverse(ans.begin(), ans.end());
         return ans;
     }
