@@ -1,8 +1,14 @@
 {
     "files.associations": {
+        "*.sqlbook": "sql",
+        "*.ndjson": "jsonl",
+        "*.dbclient-js": "javascript",
+        "*.embeddedhtml": "html",
         "iostream": "cpp",
         "*.tcc": "cpp",
         "forward_list": "cpp",
-        "list": "cpp"
-    }
+        "list": "cpp",
+        "detectcycleindirectedgraph,cpp": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
