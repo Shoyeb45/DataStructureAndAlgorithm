@@ -6,14 +6,14 @@ public:
         vector<vector<int>> dist(n, vector<int> (m, INT_MAX));
         vector<vector<bool>> vis(n, vector<bool> (m, false));
         
-        queue< pair<pair<int, int>, int> > q;
+        queue< pair<int, int> > q;
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (grid[i][j] == 1) {
                     dist[i][j] = 0;
                     vis[i][j] = 1;
-                    q.push(make_pair(make_pair(i, j), 0));                    
+                    q.push(make_pair(i, j));                    
                 }
             }
         }
@@ -22,9 +22,8 @@ public:
         int dy[] = {0, 0, -1, 1};
 
         while (!q.empty()) {
-            int x = q.front().first.first;
-            int y = q.front().first.second;
-            int distance = q.front().second;
+            int x = q.front().first;
+            int y = q.front().second;
             q.pop();
 
             for (int k = 0; k < 4; k++) {
@@ -33,21 +32,10 @@ public:
                 if (nx >= 0 && ny >= 0 && nx < n && ny < m && grid[nx][ny] == 0 && !vis[nx][ny]) {
                     vis[nx][ny] = 1;
                     dist[nx][ny] = min(dist[nx][ny], dist[x][y] + 1);
-                    q.push({{nx, ny}, dist[nx][ny]});
+                    q.push({nx, ny});
                 }
             }    
         }
-
-        for (auto &x: dist) {
-            for (auto &y: x) {
-                if (y == INT_MAX) {
-                    y = -1;
-                }
-                cout << y << " ";
-            }
-            cout << "\n";
-        }
-
 
         function<bool(int)> check = [&](int mid) {
             
