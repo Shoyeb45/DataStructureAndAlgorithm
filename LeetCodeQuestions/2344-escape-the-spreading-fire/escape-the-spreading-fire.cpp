@@ -16,8 +16,8 @@ public:
             int time = pq.front().second;
             pq.pop();
 
-            if (i == n - 1 && j == m - 1 && (fireTime[i][j] - mid - time >= 0)) {
-                return true;
+            if (i == n - 1 && j == m - 1) {
+                return time + mid <= fireTime[i][j];
             }
 
             if (time + mid >= fireTime[i][j]) {
