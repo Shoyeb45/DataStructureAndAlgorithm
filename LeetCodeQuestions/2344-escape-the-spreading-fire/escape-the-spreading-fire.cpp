@@ -7,7 +7,7 @@ public:
     bool check(int mid, vector<vector<int>>& fireTime, vector<vector<int>>& grid) {
         vector<vector<int>> visited(n, vector<int>(m, 0));
         queue<pair<pair<int, int>, int>> pq;
-        pq.push({{0, 0}, 0});
+        pq.push({{0, 0}, mid});
         visited[0][0] = true;
 
         while (!pq.empty()) {
@@ -17,10 +17,10 @@ public:
             pq.pop();
 
             if (i == n - 1 && j == m - 1) {
-                return time + mid <= fireTime[i][j];
+                return time <= fireTime[i][j]; // Here u only included the time, we also need to include mid time, because we have spent that much time in intial cells, so wee need to minus from every cell where we can reach. So this time should be less than original time, then only we can reach
             }
 
-            if (time + mid >= fireTime[i][j]) {
+            if (time >= fireTime[i][j]) { // if it's exceeding then ignore that cell as from there we'll not get any path
                 continue;
             }
 
