@@ -1,92 +1,85 @@
 class Solution {
 public:
-    int maximumMinutes(vector<vector<int>>& grid) {
-        int n = grid.size(), m = grid[0].size();
+    int arr[4] = {-1, 1, 0, 0};
+    int brr[4] = {0, 0, -1, 1};
+    int n, m;
 
-        vector<vector<int>> dist(n, vector<int> (m, INT_MAX));
-        vector<vector<bool>> vis(n, vector<bool> (m, false));
-        
-        queue< pair<int, int> > q;
+    bool check(int mid, vector<vector<int>>& fireTime, vector<vector<int>>& grid) {
+        vector<vector<int>> visited(n, vector<int>(m, 0));
+        queue<pair<pair<int, int>, int>> pq;
+        pq.push({{0, 0}, 0});
+        visited[0][0] = true;
+
+        while (!pq.empty()) {
+            int i = pq.front().first.first;
+            int j = pq.front().first.second;
+            int time = pq.front().second;
+            pq.pop();
+
+            if (i == n - 1 && j == m - 1 && (fireTime[i][j] - mid - time >= 0)) {
+                return true;
+            }
+
+            if (time + mid >= fireTime[i][j]) {
+                continue;
+            }
+
+            for (int a = 0; a < 4; a++) {
+                int ii = i + arr[a];
+                int jj = j + brr[a];
+
+                if (ii >= 0 && jj >= 0 && ii < n && jj < m && !visited[ii][jj] && grid[ii][jj] != 2) {
+                    visited[ii][jj] = true;
+                    pq.push({{ii, jj}, time + 1});
+                }
+            }
+        }
+        return false;
+    }
+
+    int maximumMinutes(vector<vector<int>>& grid) {
+        n = grid.size();
+        m = grid[0].size();
+
+        queue<pair<pair<int, int>, int>> pq;
+        vector<vector<int>> fireTime(n, vector<int>(m, INT_MAX));
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (grid[i][j] == 1) {
-                    dist[i][j] = 0;
-                    vis[i][j] = 1;
-                    q.push(make_pair(i, j));                    
+                    fireTime[i][j] = 0;
+                    pq.push({{i, j}, 0});
                 }
             }
         }
-        
-        int dx[] = {-1, 1, 0, 0};
-        int dy[] = {0, 0, -1, 1};
 
-        while (!q.empty()) {
-            int x = q.front().first;
-            int y = q.front().second;
-            q.pop();
+        while (!pq.empty()) {
+            int i = pq.front().first.first;
+            int j = pq.front().first.second;
+            int level = pq.front().second;
+            pq.pop();
 
-            for (int k = 0; k < 4; k++) {
-                int nx = x + dx[k], ny = y + dy[k];
+            for (int a = 0; a < 4; a++) {
+                int ii = i + arr[a];
+                int jj = j + brr[a];
 
-                if (nx >= 0 && ny >= 0 && nx < n && ny < m && grid[nx][ny] == 0 && !vis[nx][ny]) {
-                    vis[nx][ny] = 1;
-                    dist[nx][ny] = min(dist[nx][ny], dist[x][y] + 1);
-                    q.push({nx, ny});
+                if (ii >= 0 && jj >= 0 && ii < n && jj < m && fireTime[ii][jj] == INT_MAX && grid[ii][jj] != 2) {
+                    fireTime[ii][jj] = level + 1;
+                    pq.push({{ii, jj}, level + 1});
                 }
-            }    
+            }
         }
-
-        function<bool(int)> check = [&](int mid) {
-            
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
-                    vis[i][j] = false;
-                }
-            }
-
-            queue<pair< pair<int, int> , int>> q;
-            q.push({{0, 0}, 0});
-
-            bool ans = 0;
-
-            vis[0][0] = 1;
-            while (!q.empty()) {
-                int x = q.front().first.first, y = q.front().first.second;
-                int chk = q.front().second;
-                q.pop();
-                if (x == n - 1 && y == m - 1 && (dist[x][y] - mid - chk >= 0 || dist[x][y] == -1)) {
-                    return true;
-                }
-                if (dist[x][y] != -1 && dist[x][y] - mid - chk <= 0) {
-                    continue;
-                }
-                for (int i = 0; i < 4; i++) {
-                    int nx = x + dx[i], ny = y + dy[i];
-                    if (nx >= 0 && ny >= 0 && nx < n && ny < m && grid[nx][ny] != 2 && !vis[nx][ny]) {
-                        vis[nx][ny] = 1;
-                        q.push({{nx, ny}, chk + 1});
-                    }
-                }
-            }
-
-            return false;
-        };
 
         int low = 0, high = 1e9, ans = -1;
-
         while (low <= high) {
             int mid = low + (high - low) / 2;
-
-            if (check(mid)) {
+            if (check(mid, fireTime, grid)) {
                 ans = mid;
                 low = mid + 1;
-            }
-            else {
+            } else {
                 high = mid - 1;
             }
         }
-
         return ans;
     }
 };
