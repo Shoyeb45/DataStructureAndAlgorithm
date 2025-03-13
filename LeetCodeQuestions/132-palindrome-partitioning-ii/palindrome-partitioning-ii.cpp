@@ -1,3 +1,7 @@
+#pragma GCC optimize("O3", "unroll-loops")
+
+const auto _ = std::cin.tie(nullptr)->sync_with_stdio(false);
+
 class Solution {
 public:
     vector<vector<int>> lps, dp;
@@ -15,7 +19,7 @@ public:
         }
         int ans = INT_MAX;
         for (int k = i; k < j; k++) {
-            if (lps[i][k] == k - i + 1) {
+            if (lps[i][k] == k - i + 1) {  // only call right part if the left part is palindrome
                 ans = min(ans, 1 + f(k + 1, j, s));
             }
         }
