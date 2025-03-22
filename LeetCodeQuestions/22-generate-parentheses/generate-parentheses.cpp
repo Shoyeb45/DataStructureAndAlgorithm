@@ -10,18 +10,11 @@ public:
             return;
         }
 
-        if (s.empty()) {
-            genParanthesis(s + '(', n,ans, openingBrackets + 1, closingBrackets);
+        if (openingBrackets + 1 <= n) {
+            genParanthesis(s + '(', n, ans, openingBrackets + 1, closingBrackets);
         }
-        else {
-
-            if (openingBrackets + 1 <= n) {
-                genParanthesis(s + '(', n, ans, openingBrackets + 1, closingBrackets);
-            }
-
-            if (closingBrackets + 1 <= openingBrackets) {
-                genParanthesis(s + ')', n, ans, openingBrackets, closingBrackets + 1);
-            }
+        if (closingBrackets + 1 <= openingBrackets) {
+            genParanthesis(s + ')', n, ans, openingBrackets, closingBrackets + 1);
         }
 
     }
