@@ -1,83 +1,101 @@
-#define NFS ios_base::sync_with_stdio(false); cin.tie(NULL); 
+#define NFS ios_base::sync_with_stdio(false); cin.tie(NULL);
 
 class Solution {
-    unordered_set<string> ans;
+    set<string> ans;
 public:
     int findMinOperation(string &s) {
-        int openCount = 0;
-        int removeCount = 0;
-        
+        stack<int> st;
+        int ans = 0;
         for (char ch : s) {
+            if (ch != '(' && ch != ')') {
+                continue;
+            }
+
             if (ch == '(') {
-                openCount++;
-            } else if (ch == ')') {
-                if (openCount > 0) {
-                    openCount--;
-                } else {
-                    removeCount++;
+                st.push(ch);
+            }
+            else {
+                if (st.empty()) {
+                    ans++;
+                }
+                if (!st.empty() && st.top() == '(') {
+                    st.pop();
                 }
             }
         }
         
-        return removeCount + openCount;
+        return ans + st.size();
     }
-    
-    void f(string &s, int index, int openCount, int removeLeft, string &current) {
-        // Base case: reached the end of the string
-        if (index == s.size()) {
-            if (openCount == 0 && removeLeft == 0) {
-                ans.insert(current);
+
+    bool valid(string s) {
+        stack<char> st;
+        for (char c : s) {
+            if (c != '(' && c != ')') {
+                continue;
             }
+
+            if (c == '(') {
+                st.push(c);
+            }
+            else {
+                if (st.empty()) {
+                    return false;
+                }
+                if (!st.empty() && st.top() == '(') {
+                    st.pop();
+                }
+            }
+        }
+        
+        return st.empty();
+    }
+    int count = 0;
+    void f(int idx, string &s, string &temp, int oper, int open, int close) {
+        count++;
+        if (idx == s.size()) {
+            if (open == close && oper == 0) {
+                ans.insert(temp);
+            }
+            return; 
+        }
+
+        if (s[idx] != '(' && s[idx] != ')') {
+            temp.push_back(s[idx]);
+            f(idx + 1, s, temp, oper, open, close);
+            temp.pop_back();
             return;
         }
-        
-        // Current character
-        char c = s[index];
-        
-        // Skip non-parentheses characters
-        if (c != '(' && c != ')') {
-            current.push_back(c);
-            f(s, index + 1, openCount, removeLeft, current);
-            current.pop_back();
-            return;
-        }
-        
-        // Option 1: Remove the current parenthesis if we have removals left
-        if (removeLeft > 0) {
-            f(s, index + 1, openCount, removeLeft - 1, current);
-        }
-        
-        // Option 2: Keep the current parenthesis
-        if (c == '(') {
-            current.push_back(c);
-            f(s, index + 1, openCount + 1, removeLeft, current);
-            current.pop_back();
-        } else if (c == ')' && openCount > 0) {
-            current.push_back(c);
-            f(s, index + 1, openCount - 1, removeLeft, current);
-            current.pop_back();
+
+        if (s[idx] == '(') {
+            temp.push_back(s[idx]);
+            f(idx + 1, s, temp, oper, open + 1, close);
+            temp.pop_back();
+
+            if (oper > 0) {
+                f(idx + 1, s, temp, oper - 1, open, close);
+            }
+        } else if (s[idx] == ')') {
+            if (close < open) {
+                temp.push_back(s[idx]);
+                f(idx + 1, s, temp, oper, open, close + 1);
+                temp.pop_back();
+            }
+            if (oper > 0) {
+                f(idx + 1, s, temp, oper - 1, open, close);
+            }
         }
     }
-    
+
     vector<string> removeInvalidParentheses(string s) {
         NFS
-        // Calculate minimum operations required
-        int minRemove = findMinOperation(s);
-        
-        // Use set for unique results
-        ans.clear();
-        
-        // Initialize an empty string for building results
-        string current;
-        
-        // Start backtracking
-        f(s, 0, 0, minRemove, current);
-        
-        // Handle empty result case
+        int mnOperation = findMinOperation(s);
+        cout << mnOperation << "\n";
+        string d;
+        f(0, s, d, mnOperation, 0, 0);
+        cout<<count<<"\n";
         if (ans.empty()) {
             return {""};
         }
-        
         return vector<string>(ans.begin(), ans.end());
     }
 };
