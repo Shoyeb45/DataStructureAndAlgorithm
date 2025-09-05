@@ -1,19 +1,20 @@
 class Solution {
 public:
-    void find(map<int, int> &mp, vector<int> &temp, vector<vector<int>> &ans) {
-        if (mp.empty()) {
+    void f(vector<int> &temp, int n, vector<vector<int>> &ans, map<int, int> &mp) {
+        if (temp.size() == n) {
             ans.push_back(temp);
+            return;
         }
 
-        for (auto x: mp) {
-            auto n_mp = mp;
-            temp.push_back(x.first);
-            n_mp[x.first]--;
-            if (n_mp[x.first] == 0) {
-                n_mp.erase(x.first);
+        for (auto it: mp) {
+            if (it.second != 0) {
+                mp[it.first]--;
+                temp.push_back(it.first);
+                f(temp, n, ans, mp);
+                mp[it.first]++;
+                temp.pop_back();
+
             }
-            find(n_mp, temp, ans);
-            temp.pop_back();
         }
     }
 
@@ -25,7 +26,7 @@ public:
                 mp[x]++;
             }
             vector<int> temp;
-            find(mp, temp, ans);
+            f(temp, (int) a.size(), ans, mp);
         }
         return ans;
     }
