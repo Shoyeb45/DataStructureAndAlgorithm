@@ -72,6 +72,8 @@ void binary_lifting(vector<vector<int>> &adj, int n, int q) {
     for (int i = 0; i < n; i++) {
         for (int j = 1; j <= 30; j++) {
             if (sparse_table[i][j - 1] != -1) {
+                // First we'll find the 2^(j - 1)th parent and 2^(j - 1) parent of that node will be 
+                // 2^jth parent of node i. 
                 sparse_table[i][j] = sparse_table[sparse_table[i][j - 1]][j - 1];
             }
         }
