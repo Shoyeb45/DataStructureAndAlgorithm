@@ -13,7 +13,7 @@ public:
 
             ll mx = 1LL * skill0 * prev;
             for (int j = 1; j < n; j++) {
-                mx = max(mx, 1LL * skill[j] * prev- 1LL * skill[j - 1] * curr);
+                mx = max(mx, 1LL * skill[j] * prev - 1LL * skill[j - 1] * curr);
             }
             start += mx;
         }   
