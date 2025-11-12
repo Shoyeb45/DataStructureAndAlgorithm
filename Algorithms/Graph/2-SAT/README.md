@@ -52,6 +52,7 @@ $$(a \lor \lnot b) \land (\lnot a \lor b) \land (\lnot a \lor \lnot b) \land (a 
 - We now construct a directed graph of these implications: for each variable $x$  there will be two vertices $v_x$ and $v_{\lnot x}$ . The edges will correspond to the implications.
 
 - The edges:
+
 $$\begin{array}{cccc}
 \lnot a \Rightarrow \lnot b & a \Rightarrow b & a \Rightarrow \lnot b & \lnot a \Rightarrow \lnot c\\
 b \Rightarrow a & \lnot b \Rightarrow \lnot a & b \Rightarrow \lnot a & c \Rightarrow a
@@ -113,7 +114,7 @@ Now, for each variable $x$:
 
 - Let’s say we assign $x = \text{True}$.
 
-- That means $\text{comp}[x]$ comes **after** $\text{comp}[\lnot x]$. So in the topological order, $\lnot x$ cannot reach $x$. This prevents contradictions like "$x \Rightarrow \lnot x$".
+- That means $\text{comp}[x]$ comes **after** $\text{comp}[\lnot x]$. So in the topological order, $\lnot x$ cannot reach $x$. This prevents contradictions like $x \Rightarrow \lnot x$.
 
 - Similarly, if some other variable $y$ had both $y$ and $\lnot y$ reachable from $x$, then by graph symmetry, we’d eventually get $x \Rightarrow \lnot x$, which we already ruled out.
 
