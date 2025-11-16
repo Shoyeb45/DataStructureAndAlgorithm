@@ -24,8 +24,7 @@ public:
         ll ans = 0;
         int n = s.size();
 
-        int mod_inverse_2 = mod_pow(2, MOD - 2, MOD) % MOD;
-
+        int mod_inverse_2 = 500000004;
         for (int i = 0; i < n; ) {
             if (s[i] == '0') {
                 i++;
@@ -38,13 +37,10 @@ public:
             }
             int cnt = j - i;
             i = j;
-            // cout << cnt << "\n";
 
             ll sum = (ll)cnt * (cnt + 1) % MOD;
             sum = (ll)sum * mod_inverse_2 % MOD;
-
-            cout << sum << "\n";
-            ans = ((ll) (ans + sum) % MOD); 
+            ans = (ll)ans + sum % MOD; 
         }
         return (int) ans;
     }
