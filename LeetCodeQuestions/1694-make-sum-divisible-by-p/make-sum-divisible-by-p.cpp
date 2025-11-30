@@ -1,6 +1,9 @@
+#define NFS ios_base::sync_with_stdio(false); cin.tie(NULL);
+
 class Solution {
 public:
     int minSubarray(vector<int>& a, int p) {
+        NFS
         int sum = 0;
         for (auto& x: a) {
             sum = (sum + x) % p;
@@ -28,13 +31,13 @@ public:
 
         map<long long, int> mp;
         mp[0] = 0;
-        // 3 4 8 10
+
         for (int i = 1; i <= n; i++) {
             long long temp = (pref[i] - sum + p) % p;
             if (mp.find(temp % p) != mp.end()) {
                 ans = min(ans, i - mp[temp % p]);
             }
-            
+
             mp[pref[i] % p] = i;
         }
 
