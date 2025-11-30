@@ -31,12 +31,10 @@ public:
         // 3 4 8 10
         for (int i = 1; i <= n; i++) {
             long long temp = (pref[i] - sum + p) % p;
-            while (temp >= 0) {
-                if (mp.find(temp % p) != mp.end()) {
-                    ans = min(ans, i - mp[temp % p]);
-                } else break;
-                temp -= p;
+            if (mp.find(temp % p) != mp.end()) {
+                ans = min(ans, i - mp[temp % p]);
             }
+            
             mp[pref[i] % p] = i;
         }
 
