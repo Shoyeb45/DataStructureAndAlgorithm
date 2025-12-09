@@ -6,7 +6,7 @@ public:
         int n = nums.size();
         // for each i, if I can calculate how many elements are there
         // on left and right side with value 2 * a[i], then my work is done.
-        map<int, int> ms_l, ms_r;
+        unordered_map<int, int> ms_l, ms_r;
 
         for (int i = 1; i < n; i++)
             ms_r[nums[i]]++;
