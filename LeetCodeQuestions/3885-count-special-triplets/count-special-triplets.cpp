@@ -1,8 +1,12 @@
-const int mod = (int) 1e9 + 7;
+#pragma GCC optimize("O3, unroll-loops")
+#define NFS ios_base::sync_with_stdio(false); cin.tie(NULL);
 
+
+const int mod = (int) 1e9 + 7;
 class Solution {
 public:
     int specialTriplets(vector<int>& nums) {
+        NFS
         int n = nums.size();
         // for each i, if I can calculate how many elements are there
         // on left and right side with value 2 * a[i], then my work is done.
