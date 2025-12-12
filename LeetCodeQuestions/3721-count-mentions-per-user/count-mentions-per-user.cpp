@@ -6,22 +6,22 @@
 class Solution {
 public:
 
-    vector<string> split_by_space(string& s) {
+    vector<int> split_by_space(string& s) {
         NFS
         int n = s.size();
-        vector<string> li;
+        vector<int> li;
         string tmp = "";
 
         for (int i = 0; i < n; i++) {
             if (s[i] == ' ') {
-                li.push_back(tmp);
+                li.push_back(stoi(tmp.substr(2)));
                 tmp = "";
                 continue;
             }
             tmp += s[i];
         }
         if (tmp != "")
-            li.push_back(tmp);
+            li.push_back(stoi(tmp.substr(2)));
         return li;
     }
     
@@ -55,15 +55,14 @@ public:
                         if (check(t, i))
                             ans[i]++;
                 } else {
-                    vector<string> tmp = split_by_space(x[2]);
+                    vector<int> tmp = split_by_space(x[2]);
                     for (auto& x: tmp) {
-                        int id = stoi(x.substr(2));
-                        ans[id]++;
+                        ans[x]++;
                     }
                 }
             }
         }
-        
+
         return ans;
     }
 };
