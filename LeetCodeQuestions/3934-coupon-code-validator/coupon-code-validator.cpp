@@ -1,3 +1,14 @@
+#pragma GCC target ("avx2")
+#pragma GCC optimize ("O3")
+#pragma GCC optimize ("unroll-loops")
+
+auto nfs = []() { 
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    return 'c';
+}();
+
 class Solution {
 public:
     const set<string> valid_cat = {"electronics", "grocery", "pharmacy", "restaurant"};
