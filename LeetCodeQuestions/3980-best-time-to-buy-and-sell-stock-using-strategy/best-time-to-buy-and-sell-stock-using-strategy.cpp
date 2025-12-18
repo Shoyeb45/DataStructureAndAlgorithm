@@ -27,24 +27,17 @@ public:
             tmp += s[i] * p[i];
         }
 
-        ans = max(
-            tmp - (pref_s[k - 1] - pref_s[k - 1 - d] + pref_s[d - 1]) + (pref[k - 1] - pref[k - 1 - d]) + pref_s[n - 1] - pref_s[k - 1], 
-            ans
-        );
-
-        cout << tmp - (pref_s[k - 1] - pref_s[k - 1 - d] + pref_s[d - 1]) + (pref[k - 1] - pref[k - 1 - d]) + pref_s[n - 1] - pref_s[k - 1] << "\n";
 
         auto chk = [&](int i, int j) -> void {
-            ll first = pref_s[i + d] - pref_s[i];
+            ll left = (i == -1 ? 0 : pref_s[i]);
+            ll first = pref_s[i + d] - left;
             ll last = pref_s[j] - pref_s[j - d];
 
-            ll t = tmp - (first + last) + (pref[j] - pref[j - d]) + (pref_s[i]) + (pref_s[n - 1] - pref_s[j]);
-            cout << t << "\n";
-            ans = max(
-                ans,
-                t
-            );
+            ll t = tmp - (first + last) + (pref[j] - pref[j - d]) + left + pref_s[n - 1] - pref_s[j];
+            ans = max(ans, t);
         };
+        
+        chk(-1, k - 1);
 
         for (int i = 0, j = k; j < n; j++, i++) {
             tmp -= p[i] * s[i];
