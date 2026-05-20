@@ -7,20 +7,15 @@ public:
         int common = 0;
 
         for (int i = 0; i < n; i++) {
-            if (freq[A[i]] == 0) {
-                freq[A[i]] = 1;
-            }
-            else {
+            freq[A[i]]++;
+            freq[B[i]]++;
+            if (freq[A[i]] >= 2) {
                 common++;
-                freq[A[i]]++;
             }
-            if (freq[B[i]] == 0) {
-                freq[B[i]] = 1;
-            }
-            else {
+            if (freq[B[i]] >= 2 && B[i] != A[i]) {
                 common++;
-                freq[B[i]]++;
             }
+
             ans.push_back(common);
         }
         return ans;
