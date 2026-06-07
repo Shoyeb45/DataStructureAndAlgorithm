@@ -15,6 +15,12 @@ public:
     TreeNode* createBinaryTree(vector<vector<int>>& desc) {
         map<int, pair<int, int>> mp;
 
+        static const auto fast_io = [](){
+            std::ios::sync_with_stdio(false);
+            std::cin.tie(nullptr);
+            return nullptr;
+        }();
+        
         for (auto &x: desc) {
             if (mp.find(x[0]) != mp.end()) {
                 if (x[2]) {
